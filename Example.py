@@ -14,8 +14,14 @@ s = interface.recommender_json_str()
 interface_t = JRecInterface(recommender_json_str=s)
 
 
-interface = JRecInterface()
+interface = JRecInterface(lang=1)
 req = interface.request()
+print "Document ID:", req.id
+print req.text
+print
+print "Document ID:", req.id
+print req.text
+print
 print "Document ID:", req.id
 print req.text
 print

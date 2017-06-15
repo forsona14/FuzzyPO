@@ -164,24 +164,27 @@ class KnowledgeBoundary:
 class Knowledge:
 
 
-    # Read data from input
-    # input must be a doc_id:article dict
-    # First line of the file indicates the lesson_size
-    # Data in format of capital letters (char=True) or integers (char=False)
-    # Blank line is recognized as an empty process with no concepts
+    # Read data from articles
+    # articles must be a doc_id:article dict
     # Assume data is valid
-    def __init__(self, articles, fuzzy = 1.0, char=False):
+    # lang = 0(Japanese, default), 1(German)
+    def __init__(self, articles, fuzzy = 1.0, lang = 0):
 
         if type(articles) != dict:
             "Construct Knowledge From Articles Error!"
             return
 
+        if lang == 1:
+            json_root = "Json_German"
+        else:
+            json_root = "Json"
+
         try:
-            f = codecs.open("Json/word_index_json.txt","r","utf-8")
+            f = codecs.open(json_root + "/word_index_json.txt","r","utf-8")
             self.word_index = json.loads(f.readline()[:-1])
             f.close()
 
-            f = open("Json/doc_id_to_id_json.txt")
+            f = open(json_root + "/doc_id_to_id_json.txt")
             self.doc_id_to_id = json.loads(f.readline()[:-1])
             f.close()
 
@@ -202,7 +205,7 @@ class Knowledge:
             s = ""
             i = 0
             while True:
-                fn = "Json/intersection_graph_json_" + str(i) + ".txt"
+                fn = json_root + "/intersection_graph_json_" + str(i) + ".txt"
                 try:
                     f = open(fn)
                 except:
@@ -216,7 +219,7 @@ class Knowledge:
             s = ""
             i = 0
             while True:
-                fn = "Json/easier_graph_json_" + str(i) + ".txt"
+                fn = json_root + "/easier_graph_json_" + str(i) + ".txt"
                 try:
                     f = open(fn)
                 except:
@@ -255,8 +258,8 @@ class Knowledge:
             self.easier_graph = []
             self.intersection_graph = [[-1]*len(self.data) for i in xrange(len(self.data))]
             for i in range(len(self.data)):
-                if i%20 == 0:
-                    print "Generating Graph:", i
+                if (i+1) % 100 == 0:
+                    print "Generating Graph:", i+1, "/", len(self.data)
                 self.intersection_graph[i][i] = len(self.data[i].data)
                 for j in range(i + 1, len(self.data)):
                     self.intersection_graph[i][j] = len(
@@ -266,11 +269,11 @@ class Knowledge:
                 self.easier_graph.append(
                     [len(self.data[i].data) * fuzzy <= self.intersection_graph[i][j] for j in range(len(self.data))])
 
-            f = codecs.open('Json/word_index_json.txt', 'w', 'utf-8')
+            f = codecs.open(json_root + '/word_index_json.txt', 'w', 'utf-8')
             f.write(json.dumps(self.word_index) + "\n")
             f.close()
 
-            f = open("Json/doc_id_to_id_json.txt","w")
+            f = open(json_root + "/doc_id_to_id_json.txt","w")
             f.write(json.dumps(self.doc_id_to_id) + "\n")
             f.close()
 
@@ -280,7 +283,7 @@ class Knowledge:
             s = json.dumps(self.intersection_graph)
             while p < len(s):
                 q = min(p+MAX_JSON_SIZE, len(s))
-                f = open("Json/intersection_graph_json_" + str(i) + ".txt","w")
+                f = open(json_root + "/intersection_graph_json_" + str(i) + ".txt","w")
                 f.write(s[p:q]+"\n")
                 p = q
                 f.close()
@@ -291,7 +294,7 @@ class Knowledge:
             s = json.dumps(self.easier_graph)
             while p < len(s):
                 q = min(p+MAX_JSON_SIZE, len(s))
-                f = open("Json/easier_graph_json_" + str(i) + ".txt","w")
+                f = open(json_root + "/easier_graph_json_" + str(i) + ".txt","w")
                 f.write(s[p:q]+"\n")
                 p = q
                 f.close()

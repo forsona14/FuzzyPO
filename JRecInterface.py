@@ -6,13 +6,21 @@ from Article import Article
 from FuzzyPORecommender import FuzzyPORecommender
 from JRecResponse import JRecResponse
 import nhk_easy
+import nachrichtenleicht
 import json
 
 class JRecInterface:
 
-    def __init__(self, recommender_json_str = None):
-        self.articles = nhk_easy.read_articles()
-        self.recommender = FuzzyPORecommender(self.articles, recommender_json_str)
+    def __init__(self, recommender_json_str = None, lang=0):
+        if lang == 1:
+            # German
+            self.articles = nachrichtenleicht.read_articles()
+            self.recommender = FuzzyPORecommender(self.articles, recommender_json_str, lang)
+        else:
+            # Japanese
+            self.articles = nhk_easy.read_articles()
+            self.recommender = FuzzyPORecommender(self.articles, recommender_json_str, lang)
+
 
     def request(self):
         return self.recommender.request()
