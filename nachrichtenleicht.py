@@ -25,7 +25,7 @@ ArchiveList_URLheads = ["http://www.nachrichtenleicht.de/nachrichten.2005.de.htm
                         "http://www.nachrichtenleicht.de/sport.2004.de.html?drbm:page="]
 doc_ids = []
 
-Total_Article_Num = 4 * 10 * 10
+Total_Article_Num = 4 * 10 * 5
 
 def read_text_from_web():
 
@@ -61,7 +61,7 @@ def read_text_from_web():
     print
 
 
-def convert_text_to_articles(fn='Text/nachrichtenleicht.txt', if_article=True, if_para=True, if_sentence=True):
+def convert_text_to_articles(fn='Text/nachrichtenleicht.txt', if_article=True, if_para=True, if_twinsentence=True, if_sentence=True):
     print "Converting nachrichtenleicht.de text to Article ..."
     fi = codecs.open(fn, "r", "utf-8")
     fo = codecs.open('Text/nachrichtenleicht_articles.txt','w','utf-8')
@@ -91,6 +91,15 @@ def convert_text_to_articles(fn='Text/nachrichtenleicht.txt', if_article=True, i
                 for article in sentence_article:
                     fo.write(json.dumps(article.__dict__) + "\n")
 
+            if if_twinsentence and len(sentence_article) > 2:
+                for i in range(len(sentence_article)-1):
+                    id = doc_id + "_para" + str(len(para_article) + 1) + "_ts" + str(i + 1)
+                    text = sentence_article[i].text + ' ' + sentence_article[i+1].text
+                    wl = sentence_article[i].wordlist + sentence_article[i+1].wordlist
+                    uniq_wl = list(set(wl))
+                    article = Article(id, text, wl, uniq_wl)
+                    fo.write(json.dumps(article.__dict__) + "\n")
+
             id = doc_id + "_para" + str(len(para_article) + 1)
             text = ' '.join([a.text for a in sentence_article])
             wl = []
@@ -104,7 +113,6 @@ def convert_text_to_articles(fn='Text/nachrichtenleicht.txt', if_article=True, i
             if if_para and len(para_article) > 1:
                 for article in para_article:
                     fo.write(json.dumps(article.__dict__) + "\n")
-
 
             status = 0
             id = doc_id
@@ -147,5 +155,5 @@ def read_articles(): # Order might be different in different OS
 
 
 if __name__ == "__main__":
-    # read_text_from_web()
+    #read_text_from_web()
     convert_text_to_articles()

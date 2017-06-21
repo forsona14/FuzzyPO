@@ -83,4 +83,4 @@ def ExampleUI(lang=0):
     tk.mainloop()
 
 if __name__ == "__main__":
-    ExampleUI(lang=1)
+    ExampleUI(lang=0)

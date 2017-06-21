@@ -14,11 +14,17 @@ FuzzyPORecommender_Version = 20170522
 PSEODO_COUNT = 1.1
 
 class FuzzyPORecommender:
-    def __init__(self, articles, json_str = None, lang=0):
+    def __init__(self, articles, json_str = None, lang=0, global_local_balance=50.0):
         self.articles = articles
         self.knowledge = Knowledge(articles, 0.8, lang)
         self.N = len(self.knowledge.data)
         self.random = Random()
+
+        # TODO: put it into Serialized Part
+        self.global_local_balance = global_local_balance
+        # Global Only:     large number 500000000.0
+        # Global + Local:  50.0
+        # Local Only:      5.0
 
     ##########################################################
     ## Serialized Part
@@ -55,7 +61,7 @@ class FuzzyPORecommender:
         #return 1 + (1.0 - alpha) * color_easier + alpha * color_harder
         #return 1 + min ((1.0 - alpha) * color_easier, alpha * color_harder)
         #return 1
-        p = -1
+        p = 0.5
         return pow(pow((1.0 - alpha) * color_easier + 1, p) + pow(alpha * color_harder + 1, p), 1.0/p)
 
     # Color one node and all related node(s)
@@ -76,7 +82,7 @@ class FuzzyPORecommender:
         if len(self.knowledge.easiers[id]) == 0:
             return 1
         else:
-            return 1 + sum([1 for i in self.knowledge.easiers[id] if self.color[i] == 1])
+            return 1 + sum([1 for i in self.knowledge.easiers[id] if self.color[i] == 1 and self.knowledge.intersection_graph[id][i] > len(self.knowledge.data[i].data) * 0.5])
 
         new_colored = [i for i in self.knowledge.easiers[id] if self.color[i] == -1]
         new_colored.append(id)
@@ -126,6 +132,7 @@ class FuzzyPORecommender:
         alpha_2 = (PSEODO_COUNT + response_history_stats[0]) / (2 * PSEODO_COUNT + response_history_stats[1] + response_history_stats[0])
 
         alpha = alpha_2
+        #print alpha
 
         ##############################################################################################
         color_gains = {id:self.color_gain(id, alpha) for id in range(self.N) if self.color[id] == -1}
@@ -154,6 +161,7 @@ class FuzzyPORecommender:
             return
         max_cut_gain = max(cut_gains.values())
         max_cut_gain_ids = [id for id in cut_gains.keys() if cut_gains[id] == max_cut_gain]
+        # print max_cut_gain, len(max_cut_gain_ids)
         self.random.shuffle(max_cut_gain_ids)
         self.request_history.append(self.knowledge.data[max_cut_gain_ids[0]].doc_id)
         # print "Cut:", max_cut_gain, max_cut_gain_ids[0]
@@ -181,7 +189,7 @@ class FuzzyPORecommender:
             return JRecRequest(self.articles[self.request_history[-1]], num=len(self.request_history), info=self.request_info_history[-1])
         #TODO Trade-off
         t = len(self.request_history)
-        if t > 5 and self.random.random() < float(t) / 50.0:
+        if t > 5 and self.random.random() < float(t) / self.global_local_balance:
             #self.recommendation_request()
             #print "Cut"
             self.cut_gain_request()

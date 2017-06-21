@@ -89,6 +89,22 @@ def print_all(book_name, char=False):
 #k = Knowledge.Knowledge('Genki12', 0.66)
 k = Knowledge.Knowledge(nhk_easy.read_articles(), 0.8)
 print len(k.data)
+n = len(k.data)
+direct_easier_graph = [[False] * n for i in range(n)]
+cnt1 = 0
+cnt2 = 0
+for p in range(n):
+    for q in k.harders[p]:
+        direct_easier_graph[p][q] = True
+        cnt1 +=1
+        for t in k.harders[p]:
+            if q != t and k.easier_graph[t][q]:
+                direct_easier_graph[p][q] = False
+                cnt2 +=1
+                break
+print cnt1, cnt2
+
+
 #print len(k.UniqueProcesses)
 #k.EdgeNum()
 #k.DistanceStats()
