@@ -14,15 +14,20 @@ def iter(interface, textbox, res, lang=0):
     req = interface.request()
     article = interface.request().article
     stats = interface.recommender.color_stats()
+    if stats[0] + stats[1] == 0:
+        proportion = "0"
+    else:
+        proportion = "%.2f%%" % (float(stats[1] * 100) / (stats[1] + stats[0]))
     textbox.delete('1.0', END)
     if lang==1:
         article_text = article.text
     else:
         article_text = article.text.replace(' ', '\n')
     textbox.insert(END, "Round: " + str(req.num) + "\n"
-                   + "Doc ID: " + req.id + "\n"
+                   + "Doc ID: " + req.doc_id + "\n"
                    + "Algo: " + req.info + "\n"
-                   + "Colored Yes: " + str(stats[1]) + "  No: " + str(stats[0]) + "\n\n"
+                   #+ "Colored Yes: " + str(stats[1]) + "  No: " + str(stats[0]) + "\n\n"
+                   + "Proportion:" + proportion + "\n\n"
                    + article_text)
     save(lang, interface)
 
@@ -52,14 +57,19 @@ def ExampleUI(lang=0):
     req = interface.request()
     article = interface.request().article
     stats = interface.recommender.color_stats()
+    if stats[0] + stats[1] == 0:
+        proportion = ""
+    else:
+        proportion = "%.2f%%" % (float(stats[1] * 100) / (stats[1] + stats[0]))
     if lang==1:
         article_text = article.text
     else:
         article_text = article.text.replace(' ', '\n')
     textbox.insert(END, "Round: " + str(req.num) + "\n"
-                   + "Doc ID: " + req.id + "\n"
+                   + "Doc ID: " + req.doc_id + "\n"
                    + "Algo: " + req.info + "\n"
-                   + "Colored Yes: " + str(stats[1]) + "  No: " + str(stats[0]) + "\n\n"
+                   #+ "Colored Yes: " + str(stats[1]) + "  No: " + str(stats[0]) + "\n\n"
+                   + "Proportion:" + proportion  + "\n\n"
                    + article_text)
     save(lang, interface)
     textbox.grid(row=0, column=0, columnspan=5)

@@ -4,7 +4,7 @@ from math import fabs
 from JRecInterface import JRecInterface
 
 iteration = 200
-num_exp = 30
+num_exp = 100
 rand = random.Random()
 
 def direct(k):
@@ -58,33 +58,58 @@ def dfs(p, gt_color, harders, sim_para):
 
 
 def sim_one_groundtruth(sim_para, balance):
-    interface = JRecInterface(lang=1)
+    interface = JRecInterface(lang=0)
     interface.recommender.global_local_balance = balance
     direct(interface.recommender.knowledge)
     num = interface.recommender.knowledge.num()
     gt_color = [-1] * num
     score = [0] * num
+
+    ##################################
     for p in range(num):
-        if len(interface.recommender.knowledge.easiers[p]) == 0:
+        if len([q for q in interface.recommender.knowledge.easiers[p] if not interface.recommender.knowledge.easier_graph[p][q]]) == 0:
             gt_color[p] = (rand.random() <= sim_para)
             dfs(p, gt_color, interface.recommender.knowledge.harders, sim_para)
+
     for p in range(num):
-        for q in interface.recommender.knowledge.harders[p]:
-            if not gt_color[p] and gt_color[q]:
-                print "Error!"
-    # print float(sum([1 for p in gt_color if p])) / len(gt_color)
+        if gt_color[p] == -1:
+            print "Color Not Complete."
+    ##################################
+
+    ##################################
+    #for p in range(num):
+    #    if gt_color[p] == -1:
+    #        gt_color[p] = (rand.random() <= sim_para)
+    #        if gt_color[p]:
+    #            for q in interface.recommender.knowledge.easiers[p]:
+    #                if gt_color[q] == -1:
+    #                    gt_color[q] = True
+    #        else:
+    #            for q in interface.recommender.knowledge.harders[p]:
+    #                if gt_color[q] == -1:
+    #                    gt_color[q] = False
+    ##################################
+    #for p in range(num):
+    #    for q in interface.recommender.knowledge.harders[p]:
+    #        if not gt_color[p] and gt_color[q]:
+    #            print "Error!"
+    #print float(sum([1 for p in gt_color if p])) / len(gt_color)
 
     direct_harders = direct(interface.recommender.knowledge)
     for p in range(num):
         if gt_color[p]:
             #for q in interface.recommender.knowledge.harders[p]:
             for q in direct_harders[p]:
-                if not gt_color[q] and interface.recommender.knowledge.intersection_graph[p][q] > len(interface.recommender.knowledge.data[q].data) * 0.5:
+                if not gt_color[q]: # and interface.recommender.knowledge.intersection_graph[p][q] > len(interface.recommender.knowledge.data[q].data) * 0.5:
                     score[q] = 1
     #print sum([1 for p in gt_color if not p]), sum(score), len(gt_color)
     s = []
     for p in range(iteration):
-        n = interface.request().num
+        doc_id = interface.request().doc_id
+        n = interface.recommender.knowledge.doc_id_to_id[doc_id]
+        if interface.recommender.knowledge.data[n].doc_id != doc_id:
+            print "Doc_id_to_id Error!"
+        # print n, doc_id, gt_color[n]
         s.append(score[n])
         interface.response(gt_color[n])
         #print gt_color[n]
@@ -98,11 +123,12 @@ def sim_groundtruth(sim_para, balance):
     for i in range(1, iteration):
         r[i] = r[i] + r[i-1]
     print "Sim_para =", sim_para, "      Balance =", balance
-    print ', '.join([str(i) for i in r])
+    print ' '.join([str(i) for i in r])
 
 if __name__ == "__main__":
-    for sim_para in [0.3, 0.66, 0.89]:  # 0.3=20%, 0.66=50%, 0.89=80%, 0.95=90%
-        for balance in [5.0, 50.0, 500000000.0]:
+    for sim_para in [0.32, 0.67, 0.89]:  # 0.32=20%, 0.67=50%, 0.89=80%, 0.95=90%
+#        for balance in [5.0, 50.0, 500000000.0]:
+        for balance in [20.0, 100.0, 150.0]:
             sim_groundtruth(sim_para, balance)
 
 ######################################################################################################################

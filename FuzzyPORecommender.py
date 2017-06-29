@@ -14,7 +14,7 @@ FuzzyPORecommender_Version = 20170522
 PSEODO_COUNT = 1.1
 
 class FuzzyPORecommender:
-    def __init__(self, articles, json_str = None, lang=0, global_local_balance=50.0):
+    def __init__(self, articles, json_str = None, lang=0, global_local_balance=5.0):
         self.articles = articles
         self.knowledge = Knowledge(articles, 0.8, lang)
         self.N = len(self.knowledge.data)
@@ -58,11 +58,11 @@ class FuzzyPORecommender:
     def color_gain(self, id, alpha=0.5):
         color_easier = sum(1 for i in self.knowledge.easiers[id] if self.color[i] == -1)
         color_harder = sum(1 for i in self.knowledge.harders[id] if self.color[i] == -1)
-        #return 1 + (1.0 - alpha) * color_easier + alpha * color_harder
+        return 1 + (1.0 - alpha) * color_easier + alpha * color_harder
         #return 1 + min ((1.0 - alpha) * color_easier, alpha * color_harder)
         #return 1
-        p = 0.5
-        return pow(pow((1.0 - alpha) * color_easier + 1, p) + pow(alpha * color_harder + 1, p), 1.0/p)
+        #p = 0.5
+        #return pow(pow((1.0 - alpha) * color_easier + 1, p) + pow(alpha * color_harder + 1, p), 1.0/p)
 
     # Color one node and all related node(s)
     def color_node(self, id, res):
@@ -82,7 +82,7 @@ class FuzzyPORecommender:
         if len(self.knowledge.easiers[id]) == 0:
             return 1
         else:
-            return 1 + sum([1 for i in self.knowledge.easiers[id] if self.color[i] == 1 and self.knowledge.intersection_graph[id][i] > len(self.knowledge.data[i].data) * 0.5])
+            return 1 + sum([1 for i in self.knowledge.easiers[id] if self.color[i] == 1]) # and self.knowledge.intersection_graph[id][i] > len(self.knowledge.data[i].data) * 0.5])
 
         new_colored = [i for i in self.knowledge.easiers[id] if self.color[i] == -1]
         new_colored.append(id)
