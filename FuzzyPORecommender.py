@@ -82,7 +82,8 @@ class FuzzyPORecommender:
         if len(self.knowledge.easiers[id]) == 0:
             return 1
         else:
-            return 1 + sum([1 for i in self.knowledge.easiers[id] if self.color[i] == 1]) # and self.knowledge.intersection_graph[id][i] > len(self.knowledge.data[i].data) * 0.5])
+            return 1 + sum([1 for i in self.knowledge.direct_easiers[id] if self.color[i] == 1])
+            #return 1 + sum([1 for i in self.knowledge.easiers[id] if self.color[i] == 1]) # and self.knowledge.intersection_graph[id][i] > len(self.knowledge.data[i].data) * 0.5])
 
         new_colored = [i for i in self.knowledge.easiers[id] if self.color[i] == -1]
         new_colored.append(id)
@@ -124,11 +125,17 @@ class FuzzyPORecommender:
         alpha_1 = (PSEODO_COUNT + color_stats[0]) / (2 * PSEODO_COUNT + color_stats[1] + color_stats[0])
 
         response_history_stats = {0:0, 1:0}
-        for r in self.response_history:
-            if r == True:
-                response_history_stats[1] += 1
-            elif r == False:
-                response_history_stats[0] += 1
+        for i in range(len(self.response_history)):
+            if self.request_info_history[i].find("Assessment(Global Search)")>=0:
+                if self.response_history[i] == True:
+                    response_history_stats[1] += 1
+                elif self.response_history[i] == False:
+                    response_history_stats[0] += 1
+        # for r in self.response_history:
+        #     if r == True:
+        #         response_history_stats[1] += 1
+        #     elif r == False:
+        #         response_history_stats[0] += 1
         alpha_2 = (PSEODO_COUNT + response_history_stats[0]) / (2 * PSEODO_COUNT + response_history_stats[1] + response_history_stats[0])
 
         alpha = alpha_2
@@ -161,7 +168,7 @@ class FuzzyPORecommender:
             return
         max_cut_gain = max(cut_gains.values())
         max_cut_gain_ids = [id for id in cut_gains.keys() if cut_gains[id] == max_cut_gain]
-        # print max_cut_gain, len(max_cut_gain_ids)
+        #print max_cut_gain, len(max_cut_gain_ids)
         self.random.shuffle(max_cut_gain_ids)
         self.request_history.append(self.knowledge.data[max_cut_gain_ids[0]].doc_id)
         # print "Cut:", max_cut_gain, max_cut_gain_ids[0]
@@ -189,7 +196,8 @@ class FuzzyPORecommender:
             return JRecRequest(self.articles[self.request_history[-1]], num=len(self.request_history), info=self.request_info_history[-1])
         #TODO Trade-off
         t = len(self.request_history)
-        if t > 5 and self.random.random() < float(t) / self.global_local_balance:
+        #if t > 5 and self.random.random() < float(t) / self.global_local_balance:
+        if self.random.random() < float(t+1) / self.global_local_balance:
             #self.recommendation_request()
             #print "Cut"
             self.cut_gain_request()

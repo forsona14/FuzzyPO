@@ -230,6 +230,20 @@ class Knowledge:
                     i += 1
             self.easier_graph = json.loads(s)
 
+            s = ""
+            i = 0
+            while True:
+                fn = json_root + "/direct_easier_graph_json_" + str(i) + ".txt"
+                try:
+                    f = open(fn)
+                except:
+                    break
+                else:
+                    s += f.readline()[:-1]
+                    f.close()
+                    i += 1
+            self.direct_easier_graph = json.loads(s)
+
         except:
 
             all_uniq_wl = []
@@ -254,9 +268,9 @@ class Knowledge:
                 self.data.append(p)
                 self.doc_id_to_id[article.doc_id] = len(self.data) - 1
 
-
-            self.easier_graph = []
             self.intersection_graph = [[-1]*len(self.data) for i in xrange(len(self.data))]
+            self.easier_graph = []
+            self.direct_easier_graph = []
             for i in range(len(self.data)):
                 if (i+1) % 100 == 0:
                     print "Generating Graph:", i+1, "/", len(self.data)
@@ -268,6 +282,15 @@ class Knowledge:
             for i in range(len(self.data)):
                 self.easier_graph.append(
                     [len(self.data[i].data) * fuzzy <= self.intersection_graph[i][j] for j in range(len(self.data))])
+            self.easiers = [set([j for j in range(len(self.data)) if self.easier_graph[j][i] and i != j]) for i in
+                            range(len(self.data))]
+            for i in range(len(self.data)):
+                if (i+1) % 100 == 0:
+                    print "Generating Direct Graph:", i+1, "/", len(self.data)
+                self.direct_easier_graph.append(
+                    [self.easier_graph[i][j] and len([k for k in self.easiers[j]
+                          if k!=i and i in self.easiers[k]]) == 0
+                     for j in range(len(self.data))])
 
             f = codecs.open(json_root + '/word_index_json.txt', 'w', 'utf-8')
             f.write(json.dumps(self.word_index) + "\n")
@@ -300,9 +323,25 @@ class Knowledge:
                 f.close()
                 i += 1
 
+            i = 0
+            p = 0
+            s = json.dumps(self.direct_easier_graph)
+            while p < len(s):
+                q = min(p+MAX_JSON_SIZE, len(s))
+                f = open(json_root + "/direct_easier_graph_json_" + str(i) + ".txt","w")
+                f.write(s[p:q]+"\n")
+                p = q
+                f.close()
+                i += 1
+
         # Aux
         self.easiers = [set([j for j in range(len(self.data)) if self.easier_graph[j][i] and i != j]) for i in range(len(self.data))]
         self.harders = [set([j for j in range(len(self.data)) if self.easier_graph[i][j] and i != j]) for i in range(len(self.data))]
+        self.direct_easiers = [set([j for j in range(len(self.data)) if self.direct_easier_graph[j][i] and i != j])
+                               for i in range(len(self.data))]
+        self.direct_harders = [set([j for j in range(len(self.data)) if self.direct_easier_graph[i][j] and i != j])
+                               for i in range(len(self.data))]
+        #print sum([len(self.easiers[i]) for i in range(len(self.data))]), sum([len(self.direct_easiers[i]) for i in range(len(self.data))])
 
         # Init Random
         random.seed()
