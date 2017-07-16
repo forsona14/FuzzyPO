@@ -1,5 +1,6 @@
 from JRecInterface import JRecInterface
 
+print "0"
 interface = JRecInterface()
 interface.request()
 interface.response(True)
@@ -8,13 +9,15 @@ interface.response(False)
 interface.request()
 interface.response(True)
 
+print "1"
 # Get Json String
 s = interface.recommender_json_str()
 # Construct from Json String
 interface_t = JRecInterface(recommender_json_str=s)
+print "2"
 
 
-interface = JRecInterface(lang=1)
+interface = JRecInterface(lang=0)
 req = interface.request()
 print "Document ID:", req.id
 print req.text

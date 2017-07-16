@@ -14,9 +14,9 @@ FuzzyPORecommender_Version = 20170522
 PSEODO_COUNT = 1.1
 
 class FuzzyPORecommender:
-    def __init__(self, articles, json_str = None, lang=0, global_local_balance=5.0):
+    def __init__(self, articles, knowledge, json_str = None, lang=0, global_local_balance=30.0):
         self.articles = articles
-        self.knowledge = Knowledge(articles, 0.8, lang)
+        self.knowledge = knowledge
         self.N = len(self.knowledge.data)
         self.random = Random()
 
@@ -197,7 +197,7 @@ class FuzzyPORecommender:
         #TODO Trade-off
         t = len(self.request_history)
         #if t > 5 and self.random.random() < float(t) / self.global_local_balance:
-        if self.random.random() < float(t+1) / self.global_local_balance:
+        if ((t+1) > 50 or self.global_local_balance <= 6.0 or self.global_local_balance> 10000.0) and self.random.random() < float(t+1) / self.global_local_balance:
             #self.recommendation_request()
             #print "Cut"
             self.cut_gain_request()

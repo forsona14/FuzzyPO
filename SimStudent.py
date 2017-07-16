@@ -4,7 +4,7 @@ from math import fabs
 from JRecInterface import JRecInterface
 
 iteration = 200
-num_exp = 100
+num_exp = 300
 rand = random.Random()
 new_easier_graph = []
 new_easiers = []
@@ -204,11 +204,12 @@ def sim_groundtruth(sim_para, balance):
     print ' '.join([str(i) for i in r])
 
 if __name__ == "__main__":
-    for sim_para in [0.98, 0.95, 0.89, 0.32, 0.67, 0.89]:  # 0.32=20%, 0.67=50%, 0.89=80%, 0.95=90%
+#    for sim_para in [0.98, 0.95, 0.89, 0.32, 0.67, 0.89]:  # 0.32=20%, 0.67=50%, 0.89=80%, 0.95=90%
+    for sim_para in [0.95, 0.89, 0.67, 0.32]:
 #     for sim_para in [0]:                # Used for make-up graphs without sim_para
-#        for balance in [5.0, 50.0, 500000000.0]:
+        for balance in [0.5, 20.0, 500000000.0]:
 #        for balance in [20.0, 100.0, 150.0]:
-        for balance in [50.0]:
+#        for balance in [50.0]:
             sim_groundtruth(sim_para, balance)
 
 ######################################################################################################################

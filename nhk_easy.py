@@ -125,9 +125,9 @@ def read_articles(): # Order might be different in different OS
 
 ####################################################################################################################
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
 #    read_text_from_web()
-#    convert_text_to_articles()
+    convert_text_to_articles()
 
 
 #    articles = read_articles()
