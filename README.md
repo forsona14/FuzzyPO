@@ -1,6 +1,8 @@
 # JRec (Fuzzy Partial Ordering Version)
 
-##Required Python Package:  
+*Required Python Package*
+  
+  
 CaboCha-0.69, MeCab 0.996   
 NLTK 3.0.0 (not compatible with newer versions)   pip install -v nltk==3.0.0  
 jTransliterate  
@@ -8,7 +10,10 @@ enum (for Python 2.7)
 enum34 (Sometimes enum doesn't work)  
 requests
 
-###Usage
+<br>
+<br>
+
+*Usage*
 
 Initialize:         
 
@@ -44,6 +49,8 @@ Construct a new JRecInterface object from Json String:
 
 `interface_t = JRecInterface(recommender_json_str=s)`
 
+
+<br>
 <br>
 
-##See Also: Example.py
+*See Also: Example.py*
