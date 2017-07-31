@@ -1,33 +1,49 @@
 # JRec (Fuzzy Partial Ordering Version)
 
-Required Python Package:
-CaboCha-0.69, MeCab 0.996 
-NLTK 3.0.0 (not compatible with newer versions)   pip install -v nltk==3.0.0
-jTransliterate
-enum (for Python 2.7)
-enum34 (Sometimes enum doesn't work)
+##Required Python Package:  
+CaboCha-0.69, MeCab 0.996   
+NLTK 3.0.0 (not compatible with newer versions)   pip install -v nltk==3.0.0  
+jTransliterate  
+enum (for Python 2.7)  
+enum34 (Sometimes enum doesn't work)  
 requests
 
+###Usage
 
-Initialize:         interface = JRecInterface()
+Initialize:         
 
-User tag:           interface.user_tag()
+`interface = JRecInterface()`
 
-User Summary:       inferface.user_summary()
+User tag:           
 
-Get a New Article:  req = interface.request()
+`interface.user_tag()`
 
-                    req.id   //Document ID for URL
+User Summary:       
+
+`inferface.user_summary()`
+
+Get a New Article:  
+
+`req = interface.request()`
+
+`req.id`   //Document ID for URL
+
+`req.text` //Text
+
+`req.info` //Extra Info for this Request
                     
-                    req.text //Text
+User Feedback:      
 
-                    req.info //Extra Info for this Request
-                    
-User Feedback:      interface.response(True or False)
+`interface.response(True or False)`
 
-Get Json String:    s = interface.recommender_json_str()
+Get Json String:    
+
+`s = interface.recommender_json_str()`
 
 Construct a new JRecInterface object from Json String:
-                    interface_t = JRecInterface(recommender_json_str=s)
 
-See Also: Example.py
+`interface_t = JRecInterface(recommender_json_str=s)`
+
+<br>
+
+##See Also: Example.py
