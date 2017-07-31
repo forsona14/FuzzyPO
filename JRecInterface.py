@@ -26,8 +26,6 @@ class JRecInterface:
             self.articles = JRecInterface.static_articles
             self.recommender = FuzzyPORecommender(self.articles, JRecInterface.static_knowledge, recommender_json_str, lang)
 
-
-
     def request(self):
         return self.recommender.request()
 
@@ -38,5 +36,12 @@ class JRecInterface:
 
     def recommender_json_str(self):
         return self.recommender.json_str()
+
+    def user_tag(self):
+        return self.recommender.user_tag
+
+    def user_summary(self):
+        #TODO later
+        return "User Summary.(TODO)"
 
 

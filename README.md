@@ -9,13 +9,19 @@ enum34 (Sometimes enum doesn't work)
 requests
 
 
-Initialize: interface = JRecInterface()
+Initialize:         interface = JRecInterface()
+
+User tag:           interface.user_tag()
+
+User Summary:       inferface.user_summary()
 
 Get a New Article:  req = interface.request()
 
                     req.id   //Document ID for URL
                     
                     req.text //Text
+
+                    req.info //Extra Info for this Request
                     
 User Feedback:      interface.response(True or False)
 

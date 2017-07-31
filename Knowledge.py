@@ -676,3 +676,19 @@ class Knowledge:
                 best_seq = seq
         return seq
 
+
+################################################################################################################
+
+    def print_tlp(self):
+        cnt = 0
+        f = open("Text/graph.tlp", "w")
+        f.write('(tlp "2.0"\n')
+        f.write('(nodes ' + ' '.join([str(i) for i in range(self.num())]) + ')\n')
+        for i in range(self.num()):
+            for j in self.direct_harders[i]:
+                f.write('(edge ' + str(cnt) + ' ' + str(i) + ' ' + str(j) + ')\n')
+                cnt += 1
+        f.write(')\n')
+        f.close()
+        print "Writing tlp File Complete."
+

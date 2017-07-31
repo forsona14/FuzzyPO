@@ -20,39 +20,44 @@ class FuzzyPORecommender:
         self.N = len(self.knowledge.data)
         self.random = Random()
 
-        # TODO: put it into Serialized Part
-        self.global_local_balance = global_local_balance
-        # Global Only:     large number 500000000.0
-        # Global + Local:  50.0
-        # Local Only:      5.0
-
     ##########################################################
     ## Serialized Part
         if json_str != None:
             _l = json.loads(json_str)
         else:
             _l = []
-        if len(_l) != 5:
+        if len(_l) != 6:
         # if json_str == None or l[0] != FuzzyPORecommender_Version
             self.version = FuzzyPORecommender_Version
+            self.user_tag = self.random.choice([u'A',u'A',u'A',u'B',u'B',u'B',u'C',u'C',u'C',u'D'])
             self.request_history = []
             self.request_info_history = []
             self.response_history = []
             self.color = [-1] * self.N  # -1 for unknown, or [0,1]
         else:
             self.version = _l[0]
-            self.request_history = _l[1]
-            self.request_info_history = _l[2]
-            self.response_history = _l[3]
-            self.color = _l[4]
+            self.user_tag = _l[1]
+            self.request_history = _l[2]
+            self.request_info_history = _l[3]
+            self.response_history = _l[4]
+            self.color = _l[5]
 
         ##########################################################
         ## Aux Part
+
+        self.global_local_balance = {u'A':50000000.0, u'B':50.0, u'C':0.5, u'D':-1}[self.user_tag]
+
+        # Specify global_local_balance here only in code test.
+        # self.global_local_balance = global_local_balance
+        # Global Only:     large number 500000000.0
+        # Global + Local:  50.0
+        # Local Only:      5.0
+
         #self.easiers = [set([j for j in xrange(self.N) if self.knowledge.easier_graph[j][i] and i != j]) for i in xrange(self.N)]
         #self.harders = [set([j for j in xrange(self.N) if self.knowledge.easier_graph[i][j] and i != j]) for i in xrange(self.N)]
 
     def json_str(self):
-        return json.dumps([self.version, self.request_history, self.request_info_history, self.response_history, self.color])
+        return json.dumps([self.version, self.user_tag, self.request_history, self.request_info_history, self.response_history, self.color])
 
     # Expected Gain (number of nodes that can be colored) after Asking one doc to the student
     def color_gain(self, id, alpha=0.5):
@@ -126,7 +131,7 @@ class FuzzyPORecommender:
 
         response_history_stats = {0:0, 1:0}
         for i in range(len(self.response_history)):
-            if self.request_info_history[i].find("Assessment(Global Search)")>=0:
+            if self.request_info_history[i].find(u"Assessment(Global Search)")>=0:
                 if self.response_history[i] == True:
                     response_history_stats[1] += 1
                 elif self.response_history[i] == False:
@@ -150,7 +155,7 @@ class FuzzyPORecommender:
         self.random.shuffle(max_color_gain_ids)
         # print "Color:", max_color_gain, max_color_gain_ids[0]
         self.request_history.append(self.knowledge.data[max_color_gain_ids[0]].doc_id)
-        self.request_info_history.append("Assessment(Global Search)")
+        self.request_info_history.append(u"Assessment(Global Search)")
 
     def cut_gain_request(self):
 
@@ -197,7 +202,8 @@ class FuzzyPORecommender:
         #TODO Trade-off
         t = len(self.request_history)
         #if t > 5 and self.random.random() < float(t) / self.global_local_balance:
-        if ((t+1) > 50 or self.global_local_balance <= 6.0 or self.global_local_balance> 10000.0) and self.random.random() < float(t+1) / self.global_local_balance:
+        # TODO Remember to add restrition to Global Search at start
+        if (self.global_local_balance <= 1.0 or self.global_local_balance> 10000.0) and self.random.random() < float(t+1) / self.global_local_balance:
             #self.recommendation_request()
             #print "Cut"
             self.cut_gain_request()
