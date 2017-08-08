@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2be4cb1-ffce-4872-a623-b21e230dab3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Json/word_index_json.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Json/intersection_graph_json_0.txt" afterPath="$PROJECT_DIR$/Json/intersection_graph_json_0.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Json/intersection_graph_json_1.txt" afterPath="$PROJECT_DIR$/Json/intersection_graph_json_1.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Json/intersection_graph_json_2.txt" afterPath="$PROJECT_DIR$/Json/intersection_graph_json_2.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Text/nhk_easy.txt" afterPath="$PROJECT_DIR$/Text/nhk_easy.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Text/nhk_easy_articles.txt" afterPath="$PROJECT_DIR$/Text/nhk_easy_articles.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +33,8 @@
       <file leaf-file-name="JRecInterface.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JRecInterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="851">
-              <caret line="44" column="34" lean-forward="false" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+            <state relative-caret-position="469">
+              <caret line="26" column="79" lean-forward="false" selection-start-line="26" selection-start-column="79" selection-end-line="26" selection-end-column="79" />
               <folding>
                 <element signature="e#43#52#0" expanded="true" />
               </folding>
@@ -49,8 +55,18 @@
       <file leaf-file-name="Knowledge.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Knowledge.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15801">
-              <caret line="694" column="0" lean-forward="false" selection-start-line="694" selection-start-column="0" selection-end-line="694" selection-end-column="0" />
+            <state relative-caret-position="6607">
+              <caret line="371" column="17" lean-forward="false" selection-start-line="371" selection-start-column="17" selection-end-line="371" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="word_index_json.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Json/word_index_json.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="876">
+              <caret line="0" column="81943" lean-forward="true" selection-start-line="0" selection-start-column="81943" selection-end-line="0" selection-end-column="81943" />
               <folding />
             </state>
           </provider>
@@ -59,61 +75,18 @@
       <file leaf-file-name="JRecInterface_SimpleUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JRecInterface_SimpleUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="920">
-              <caret line="43" column="29" lean-forward="false" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+            <state relative-caret-position="345">
+              <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1265">
-                <caret line="55" column="23" lean-forward="true" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Example.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Example.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testk.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testk.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2001">
-              <caret line="89" column="54" lean-forward="false" selection-start-line="89" selection-start-column="54" selection-end-line="89" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Article.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Article.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JRecResponse.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JRecResponse.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="483">
+              <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -122,11 +95,41 @@
       <file leaf-file-name="FuzzyPORecommender.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FuzzyPORecommender.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+            <state relative-caret-position="736">
+              <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
               <folding>
                 <element signature="e#43#78#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nhk_easy_articles.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Text/nhk_easy_articles.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13041">
+              <caret line="567" column="620" lean-forward="false" selection-start-line="567" selection-start-column="620" selection-end-line="567" selection-end-column="620" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nhk_easy.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Text/nhk_easy.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="422">
+              <caret line="279" column="297" lean-forward="false" selection-start-line="279" selection-start-column="297" selection-end-line="279" selection-end-column="297" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nhk_easy.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nhk_easy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="110" column="8" lean-forward="false" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -158,6 +161,7 @@
       <find>request</find>
       <find>nhk</find>
       <find>２０２０年に東京オリンピックとパラリンピックがあります。</find>
+      <find>k10010466471000</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,23 +179,22 @@
         <option value="$PROJECT_DIR$/Text/SimpleUI_savedata.text" />
         <option value="$PROJECT_DIR$/Text/nachrichtenleicht_articles.txt" />
         <option value="$PROJECT_DIR$/nachrichtenleicht.py" />
-        <option value="$PROJECT_DIR$/JRecInterface_SimpleUI.py" />
-        <option value="$PROJECT_DIR$/Text/nhk_easy.txt" />
-        <option value="$PROJECT_DIR$/nhk_easy.py" />
         <option value="$PROJECT_DIR$/SimStudent.py" />
         <option value="$PROJECT_DIR$/testk.py" />
         <option value="$PROJECT_DIR$/Knowledge.py" />
-        <option value="$PROJECT_DIR$/Example.py" />
-        <option value="$PROJECT_DIR$/FuzzyPORecommender.py" />
-        <option value="$PROJECT_DIR$/JRecInterface.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/JRecInterface_SimpleUI.py" />
+        <option value="$PROJECT_DIR$/Example.py" />
+        <option value="$PROJECT_DIR$/JRecInterface.py" />
+        <option value="$PROJECT_DIR$/FuzzyPORecommender.py" />
+        <option value="$PROJECT_DIR$/nhk_easy.py" />
+        <option value="$PROJECT_DIR$/Text/nhk_easy.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="2578" />
+    <option name="width" value="2563" />
     <option name="height" value="1408" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -213,7 +216,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -270,11 +272,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JRec" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/WorkSpace/FuzzyPO/JRecResponse.py" />
   </component>
   <component name="RecentsManager">
@@ -294,7 +297,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.JRecInterface_SimpleUI">
+  <component name="RunManager" selected="Python.Example">
     <configuration default="false" name="Example" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -490,11 +493,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.JRecInterface_SimpleUI" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Example" />
-        <item index="2" class="java.lang.String" itemvalue="Python.testk" />
-        <item index="3" class="java.lang.String" itemvalue="Python.SimStudent" />
-        <item index="4" class="java.lang.String" itemvalue="Python.nhk_easy" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Example" />
+        <item index="1" class="java.lang.String" itemvalue="Python.nhk_easy" />
+        <item index="2" class="java.lang.String" itemvalue="Python.JRecInterface_SimpleUI" />
+        <item index="3" class="java.lang.String" itemvalue="Python.testk" />
+        <item index="4" class="java.lang.String" itemvalue="Python.SimStudent" />
       </list>
     </recent_temporary>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -543,12 +546,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="2578" height="1408" extended-state="0" />
+    <frame x="-9" y="0" width="2563" height="1408" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16992188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1697446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291039" sideWeight="0.50313234" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887492" sideWeight="0.49686766" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -564,7 +568,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
@@ -579,11 +582,19 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="86" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Example.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="88" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="json_root" />
+        <watch expression="interface.recommender.articles[&quot;k10010466471000_para3_s2&quot;]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -737,13 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Json/word_index_json.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6880">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Json/id_doc_id_json.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8035">
@@ -821,27 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhk_easy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2875">
-          <caret line="129" column="26" lean-forward="true" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Text/nhk_easy_articles.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="4257" column="1540" lean-forward="false" selection-start-line="4257" selection-start-column="1540" selection-end-line="4257" selection-end-column="1540" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Text/nhk_easy.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="97" column="53" lean-forward="false" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SimStudent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
@@ -880,10 +863,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1161">
+            <caret line="55" column="23" lean-forward="false" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/JRecResponse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhk_easy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="110" column="8" lean-forward="false" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Text/nhk_easy.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="279" column="297" lean-forward="false" selection-start-line="279" selection-start-column="297" selection-end-line="279" selection-end-column="297" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JRecInterface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="26" column="79" lean-forward="false" selection-start-line="26" selection-start-column="79" selection-end-line="26" selection-end-column="79" />
+          <folding>
+            <element signature="e#43#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JRecInterface_SimpleUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FuzzyPORecommender.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding>
+            <element signature="e#43#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Text/nhk_easy_articles.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13041">
+          <caret line="567" column="620" lean-forward="false" selection-start-line="567" selection-start-column="620" selection-end-line="567" selection-end-column="620" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Json/word_index_json.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="876">
+          <caret line="0" column="81943" lean-forward="true" selection-start-line="0" selection-start-column="81943" selection-end-line="0" selection-end-column="81943" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Knowledge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6607">
+          <caret line="371" column="17" lean-forward="false" selection-start-line="371" selection-start-column="17" selection-end-line="371" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -896,63 +962,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JRecInterface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="44" column="34" lean-forward="false" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
-          <folding>
-            <element signature="e#43#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FuzzyPORecommender.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-          <folding>
-            <element signature="e#43#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Knowledge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15801">
-          <caret line="694" column="0" lean-forward="false" selection-start-line="694" selection-start-column="0" selection-end-line="694" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JRecInterface_SimpleUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="43" column="29" lean-forward="false" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1265">
-            <caret line="55" column="23" lean-forward="true" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="483">
+          <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding />
         </state>
       </provider>

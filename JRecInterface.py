@@ -41,7 +41,10 @@ class JRecInterface:
         return self.recommender.user_tag
 
     def user_summary(self):
-        #TODO later
-        return "User Summary.(TODO)"
+        stats = self.recommender.color_stats()
+        if stats[0] + stats[1] == 0:
+            return 0
+        else:
+            return round(float(stats[1] * 100) / (stats[1] + stats[0]),2)
 
 

@@ -30,6 +30,7 @@ class FuzzyPORecommender:
         # if json_str == None or l[0] != FuzzyPORecommender_Version
             self.version = FuzzyPORecommender_Version
             self.user_tag = self.random.choice([u'A',u'A',u'A',u'B',u'B',u'B',u'C',u'C',u'C',u'D'])
+            #self.user_tag = u"D"
             self.request_history = []
             self.request_info_history = []
             self.response_history = []
@@ -177,7 +178,11 @@ class FuzzyPORecommender:
         self.random.shuffle(max_cut_gain_ids)
         self.request_history.append(self.knowledge.data[max_cut_gain_ids[0]].doc_id)
         # print "Cut:", max_cut_gain, max_cut_gain_ids[0]
-        self.request_info_history.append("Recommendation(Local Search)")
+        self.request_info_history.append(u"Recommendation(Local Search)")
+
+    def random_request(self):
+        self.request_history.append(self.knowledge.data[self.random.choice([i for i in range(self.N) if self.color[i] == -1])].doc_id)
+        self.request_info_history.append(u"Random")
 
     def recommendation_request(self):
         candidate = {}
@@ -203,7 +208,9 @@ class FuzzyPORecommender:
         t = len(self.request_history)
         #if t > 5 and self.random.random() < float(t) / self.global_local_balance:
         # TODO Remember to add restrition to Global Search at start
-        if (self.global_local_balance <= 1.0 or self.global_local_balance> 10000.0) and self.random.random() < float(t+1) / self.global_local_balance:
+        if self.global_local_balance < 0:
+            self.random_request()
+        elif self.global_local_balance <= 1.0 or self.random.random() < float(t+1) / self.global_local_balance:
             #self.recommendation_request()
             #print "Cut"
             self.cut_gain_request()
@@ -211,13 +218,17 @@ class FuzzyPORecommender:
             #self.assessment_request()
             #print "Color"
             self.color_gain_request()
+
         if len(self.response_history) < len(self.request_history):
             return JRecRequest(self.articles[self.request_history[-1]], num=len(self.request_history), info=self.request_info_history[-1])
         else:
             return None
 
     def response(self, response):
-        self.color_node(self.knowledge.doc_id_to_id[self.request_history[-1]], response.understood)
+        if self.global_local_balance < 0: # Random
+            self.color[self.knowledge.doc_id_to_id[self.request_history[-1]]] = {True:1, False:0}[response.understood]
+        else:
+            self.color_node(self.knowledge.doc_id_to_id[self.request_history[-1]], response.understood)
         self.response_history.append(response.understood)
 
     def num_colored(self):
