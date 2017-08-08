@@ -5,7 +5,7 @@ interface = JRecInterface()
 interface.request()
 interface.response(True)
 interface.request()
-interface.response(False)
+interface.response(True)
 interface.request()
 interface.response(True)
 
