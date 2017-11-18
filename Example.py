@@ -13,7 +13,8 @@ print "1"
 # Get Json String
 s = interface.recommender_json_str()
 # Construct from Json String
-interface_t = JRecInterface(recommender_json_str=s)
+#interface_t = JRecInterface(recommender_json_str=s)
+interface_t = JRecInterface(s)
 print interface.user_tag(), interface.user_summary()
 print interface_t.user_tag(), interface_t.user_summary()
 print "2"

@@ -30,7 +30,7 @@ class FuzzyPORecommender:
         # if json_str == None or l[0] != FuzzyPORecommender_Version
             self.version = FuzzyPORecommender_Version
             self.user_tag = self.random.choice([u'A',u'A',u'A',u'B',u'B',u'B',u'C',u'C',u'C',u'D'])
-            self.user_tag = u"E"
+            self.user_tag = u"B"
             self.request_history = []
             self.request_info_history = []
             self.response_history = []
