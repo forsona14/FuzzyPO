@@ -30,7 +30,7 @@ class FuzzyPORecommender:
         # if json_str == None or l[0] != FuzzyPORecommender_Version
             self.version = FuzzyPORecommender_Version
             self.user_tag = self.random.choice([u'A',u'A',u'A',u'B',u'B',u'B',u'C',u'C',u'C',u'D'])
-            #self.user_tag = u"D"
+            self.user_tag = u"E"
             self.request_history = []
             self.request_info_history = []
             self.response_history = []
@@ -46,7 +46,7 @@ class FuzzyPORecommender:
         ##########################################################
         ## Aux Part
 
-        self.global_local_balance = {u'A':50000000.0, u'B':50.0, u'C':0.5, u'D':-1}[self.user_tag]
+        self.global_local_balance = {u'A':50000000.0, u'B':50.0, u'C':0.5, u'D':-1, 'E':50000000.0}[self.user_tag]
 
         # Specify global_local_balance here only in code test.
         # self.global_local_balance = global_local_balance
@@ -64,7 +64,10 @@ class FuzzyPORecommender:
     def color_gain(self, id, alpha=0.5):
         color_easier = sum(1 for i in self.knowledge.easiers[id] if self.color[i] == -1)
         color_harder = sum(1 for i in self.knowledge.harders[id] if self.color[i] == -1)
-        return 1 + (1.0 - alpha) * color_easier + alpha * color_harder
+        if self.user_tag == u'E':
+            return 1 + min(color_easier, color_harder)
+        else:
+            return 1 + (1.0 - alpha) * color_easier + alpha * color_harder
         #return 1 + min ((1.0 - alpha) * color_easier, alpha * color_harder)
         #return 1
         #p = 0.5

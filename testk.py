@@ -88,7 +88,7 @@ def print_all(book_name, char=False):
 
 #k = Knowledge.Knowledge('Genki12', 0.66)
 k = Knowledge.Knowledge(nhk_easy.read_articles(), 0.8)
-k.print_tlp()
+k.print_tlp(0.6)
 print len(k.data)
 n = len(k.data)
 direct_easier_graph = [[False] * n for i in range(n)]

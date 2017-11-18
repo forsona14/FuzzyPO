@@ -679,16 +679,40 @@ class Knowledge:
 
 ################################################################################################################
 
-    def print_tlp(self):
+    def print_tlp(self, fuzzy=-1):
+        if fuzzy == -1:
+            direct_harders = self.direct_harders
+        else:
+            easier_graph = []
+            direct_easier_graph = []
+            for i in range(len(self.data)):
+                easier_graph.append(
+                    [len(self.data[i].data) * fuzzy <= self.intersection_graph[i][j] for j in range(len(self.data))])
+            easiers = [set([j for j in range(len(self.data)) if easier_graph[j][i] and i != j]) for i in
+                       range(len(self.data))]
+            for i in range(len(self.data)):
+                if (i+1) % 100 == 0:
+                    print "Print_tlp: generating Direct Graph:", i+1, "/", len(self.data)
+                direct_easier_graph.append(
+                    [easier_graph[i][j] and len([k for k in easiers[j]
+                          if k!=i and i in easiers[k]]) == 0
+                     for j in range(len(self.data))])
+            direct_harders = [set([j for j in range(len(self.data)) if direct_easier_graph[i][j] and i != j])
+                              for i in range(len(self.data))]
+
         cnt = 0
-        f = open("Text/graph.tlp", "w")
+        if fuzzy == -1:
+            f = open("Text/graph.tlp", "w")
+        else:
+            f = open("Text/fuzzy"+str(fuzzy)+"_graph.tlp", "w")
         f.write('(tlp "2.0"\n')
         f.write('(nodes ' + ' '.join([str(i) for i in range(self.num())]) + ')\n')
         for i in range(self.num()):
-            for j in self.direct_harders[i]:
+            for j in direct_harders[i]:
                 f.write('(edge ' + str(cnt) + ' ' + str(i) + ' ' + str(j) + ')\n')
                 cnt += 1
         f.write(')\n')
         f.close()
+        print "Total Edges with fuzzy para="+str(fuzzy)+":",cnt
         print "Writing tlp File Complete."
 

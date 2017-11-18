@@ -22,6 +22,10 @@ def read_text_from_web():
             old_news_ids.append(match.group(1))
     f.close()
 
+    #TODO This is the code if we need brand new articles
+    old_news = {}
+    old_news_ids = []
+
     f = codecs.open('Text/nhk_easy.txt','w','utf-8')
 
     for news_id in old_news_ids:
@@ -126,8 +130,8 @@ def read_articles(): # Order might be different in different OS
 ####################################################################################################################
 
 if __name__ == "__main__":
-#    read_text_from_web()
+    read_text_from_web()
     convert_text_to_articles()
 
 
-#    articles = read_articles()
+    articles = read_articles()
